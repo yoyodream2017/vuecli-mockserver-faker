@@ -1,6 +1,6 @@
-# faker
+# Vuecli-mockserver-faker
 
-> A Vue.js project
+> A Vue.js project, with mockserver and faker.js
 
 ## Build Setup
 
