@@ -13,9 +13,11 @@ const actions = {
     .then((response) => {
       console.log(response)
       commit(FETCH_USER, response.data)
+      return response
     })
     .catch((error) => {
       console.error(error)
+      return error
     })
   }
 }

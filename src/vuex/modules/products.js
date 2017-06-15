@@ -7,15 +7,17 @@ const state = {
 }
 
 const actions = {
-  fetchProducts: ({ commit }) => {
+  fetchProducts: ({ commit }, req) => {
   // API request
-    return services.products.getProducts()
+    return services.products.getProducts(req)
     .then((response) => {
       console.log(response)
       commit(FETCH_PRODUCTS, response.data)
+      return response
     })
     .catch((error) => {
       console.error(error)
+      return error
     })
   }
 }

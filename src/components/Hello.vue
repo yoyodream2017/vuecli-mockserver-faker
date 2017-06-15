@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ isLoading }}</h1>
     <div style='color:red'>{{totalProducts}}</div>
     <div style='color:blue'>{{totalUser}}</div>
   </div>
@@ -19,17 +19,29 @@ export default {
     ...mapActions([
       'fetchProducts',
       'fetchUser'
-    ])
+    ]),
+    test () {
+      console.log('请求成功')
+    }
   },
   computed: {
     ...mapGetters([
       'totalProducts',
-      'totalUser'
+      'totalUser',
+      'isLoading'
     ])
   },
   mounted () {
-    this.fetchProducts()
-    this.fetchUser()
+    this.fetchProducts().then((res) => {
+      this.$status(res, function (that) {
+        that.test()
+      }, this)
+    })
+    this.fetchUser().then((res) => {
+      this.$status(res, function (that) {
+        that.test()
+      }, this)
+    })
   }
 }
 </script>
