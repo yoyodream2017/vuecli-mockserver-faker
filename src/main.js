@@ -9,7 +9,10 @@ import store from './vuex/store'
 
 Vue.config.productionTip = false
 Vue.use(status)
-
+import Vue2Scrollbar from 'vue2-scrollbar'
+Vue.component('vue2-scrollbar', Vue2Scrollbar)
+require('./assets/vue2-scrollbar.css')
+require('./assets/app.css')
 axios.interceptors.request.use(config => {
   vm.$store.commit('FETCH_LOADING', true)
   return config
