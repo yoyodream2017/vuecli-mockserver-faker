@@ -31,7 +31,7 @@ export default {
       'isLoading'
     ])
   },
-  mounted () {
+  mounted () {aaaaa
     this.fetchProducts().then((res) => {
       this.$status(res, function (that) {
         that.test()
