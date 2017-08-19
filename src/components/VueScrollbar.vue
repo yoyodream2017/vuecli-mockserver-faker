@@ -19,6 +19,7 @@
         <div class="kolom"></div>
         <div class="kolom"></div>
         <div class="kolom"></div>
+        <div class="kolom"></div>
         <div class="clearfix"></div>
       </div>
     </vue2-scrollbar>
