@@ -26,6 +26,6 @@ module.exports = function () {
   }
   // 修改下面的数字，指定返回数组的长度
   data.user.data = createObject(User, 2)
-  data.products = createObject(Products, 2)
+  data.products = createObject(Products, 10)
   return data
 }

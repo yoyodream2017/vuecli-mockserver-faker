@@ -3,6 +3,7 @@
     <h1>{{ isLoading }}</h1>
     <div style='color:red'>{{totalProducts}}</div>
     <div style='color:blue'>{{totalUser}}</div>
+    <div @click='send'>send</div>
   </div>
 </template>
 
@@ -22,6 +23,13 @@ export default {
     ]),
     test () {
       console.log('请求成功')
+    },
+    send () {
+      this.fetchProducts().then((res) => {
+        this.$status(res, function (that) {
+          that.test()
+        }, this)
+      })
     }
   },
   computed: {
@@ -31,12 +39,7 @@ export default {
       'isLoading'
     ])
   },
-  mounted () {aaaaa
-    this.fetchProducts().then((res) => {
-      this.$status(res, function (that) {
-        that.test()
-      }, this)
-    })
+  mounted () {
     this.fetchUser().then((res) => {
       this.$status(res, function (that) {
         that.test()
