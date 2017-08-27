@@ -6,13 +6,16 @@ import router from './router'
 import axios from 'axios'
 import status from './lib/status'
 import store from './vuex/store'
+import IsLoading from './components/IsLoading'
+import Vue2Scrollbar from 'vue2-scrollbar'
+import './assets/vue2-scrollbar.css'
+import './assets/app.css'
 
 Vue.config.productionTip = false
 Vue.use(status)
-import Vue2Scrollbar from 'vue2-scrollbar'
+Vue.component('is-loading', IsLoading)
 Vue.component('vue2-scrollbar', Vue2Scrollbar)
-require('./assets/vue2-scrollbar.css')
-require('./assets/app.css')
+
 axios.interceptors.request.use(config => {
   vm.$store.commit('FETCH_LOADING', true)
   return config

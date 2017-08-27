@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ isLoading }}</h1>
+   <img src="../assets/logo.png">
+    <is-loading></is-loading>
     <div style='color:red'>{{totalProducts}}</div>
     <div style='color:blue'>{{totalUser}}</div>
     <div @click='send'>send</div>

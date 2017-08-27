@@ -31,3 +31,10 @@ p {
 .clearfix {
   clear: both;
 }
+
+.title {
+  font-weight: bold;
+  color: purple;
+  font-size: 30px;
+  margin: 10px auto;
+}
