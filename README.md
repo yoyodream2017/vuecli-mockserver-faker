@@ -8,8 +8,15 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080 and json-server mock data at localhost:3000
 npm run dev
+
+# serve with hot reload at localhost:8080
+
+npm run dev-server
+
+# serve with hot reload at localhost:8080
+npm run start
 
 # build for production with minification
 npm run build
