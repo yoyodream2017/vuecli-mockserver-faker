@@ -19,6 +19,9 @@ const actions = {
       console.error(error)
       return error
     })
+  },
+  setUser: ({ commit }, data) => {
+    commit(FETCH_USER, data)
   }
 }
 const getters = {
