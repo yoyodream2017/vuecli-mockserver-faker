@@ -12,8 +12,8 @@
         <div class='user-table__row' v-for="item in _userData.data">
           <div class='check-box' :class="item.checked?'check-box__checked':''" @click='selectUser(item.id)'>{{item.index}}</div>
           <div class='user-table__column'>{{item.name}}</div>
-          <div class='user-table__column'>{{item.email}}</div>
           <div class='user-table__column'>{{item.website}}</div>
+          <div class='user-table__column'>{{item.email}}</div>
           <div class='delete last__column' @click='deleteUser'>delete</div>
         </div>
       </div>
