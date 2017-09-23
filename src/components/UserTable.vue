@@ -154,7 +154,7 @@ export default {
   position: absolute;
   width: 10px;
   height:10px;
-  background-color: green;
+  background-color: red;
 }
 
 
@@ -163,6 +163,7 @@ export default {
 }
 
 .user-table__column {
+  text-transform: capitalize;
   text-align: left;
   flex: 1;
 }
@@ -174,6 +175,7 @@ export default {
 }
 
 .last__column {
+  text-transform: capitalize;
   width: 60px;
 }
 </style>
