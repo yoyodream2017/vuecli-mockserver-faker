@@ -1,24 +1,32 @@
 <template>
   <div class="hello">
     <div class='header'>Original</div>
-    <div style='display: flex;'>
-      <div style='margin-right: 10px;' v-for='item in testArray'>{{item.name}}---{{item.age}}</div>
+    <div class='content'>
+      <div v-for='item in testArray'>{{item.name}}---{{item.age}}</div>
     </div>
     <div class='header'>AddClass-hightlight</div>
-    <div style='display: flex;'>
-      <div style='margin-right: 10px;' v-for='item in addHighlightClass' :class='item.highlight?"hightlight":""'>{{item.name}}---{{item.age}}</div>
+    <div class='content'>
+      <div v-for='item in addHighlightClass' :class='item.highlight?"hightlight":""'>{{item.name}}---{{item.age}}</div>
     </div>
     <div class='header'>SortByName</div>
-    <div style='display: flex;'>
-      <div style='margin-right: 10px;' v-for='item in sortByName'>{{item.name}}---{{item.age}}</div>
+    <div class='content'>
+      <div v-for='item in sortByName'>{{item.name}}---{{item.age}}</div>
     </div>
     <div class='header'>SortByAge</div>
-    <div style='display: flex;'>
-      <div style='margin-right: 10px;' v-for='item in sortByAge'>{{item.name}}---{{item.age}}</div>
+    <div class='content'>
+      <div v-for='item in sortByAge'>{{item.name}}---{{item.age}}</div>
     </div>
     <div class='header'>filterOnAge</div>
-    <div style='display: flex;'>
-      <div style='margin-right: 10px;' v-for='item in filterOnAge'>{{item.name}}---{{item.age}}</div>
+    <div class='content'>
+      <div v-for='item in filterOnAge'>{{item.name}}---{{item.age}}</div>
+    </div>
+    <div class='header'>findOneAge</div>
+    <div class='content'>
+      <div>{{findOneAge}}</div>
+    </div>
+    <div class='header'>modifyObject</div>
+    <div class='content'>
+      <div>{{modifyObject}}</div>
     </div>
   </div>
 </template>
@@ -33,13 +41,19 @@ export default {
         { id: 3, name: 'a1', age: '19' },
         { id: 4, name: 'a01', age: '182' }
       ],
-      highlightId: [1, 2]
+      highlightId: [1, 2],
+      testArray2: [
+        { min: '20', max: '30' },
+        { min: '20' },
+        { max: '30' },
+        {}
+      ]
     }
   },
   computed: {
     addHighlightClass () {
-      // Use map and Object.assign to add a new attribute
-      return this.testArray.map(item => Object.assign(item, {
+      // Use map and Object.assign to add a new attribute, first {} would copy a item.
+      return this.testArray.map(item => Object.assign({}, item, {
         highlight: this.highlightId.includes(item.id)
       }))
     },
@@ -53,6 +67,18 @@ export default {
     },
     filterOnAge () {
       return this.testArray.filter(item => item.age > 19)
+    },
+    findOneAge () {
+      return this.testArray.find(item => item.age > 19)
+    },
+    modifyObject () {
+      // Object.keys().length can be used to check when an object is {}.
+      // reduce will not add any nonexsitent attribute while make change on value.
+      return this.testArray2.filter(item => Object.keys(item).length)
+      .map(item => Object.keys(item).reduce((hash, key) => {
+        hash[key] = +item[key]
+        return hash
+      }, {}))
     }
   }
 }
@@ -67,6 +93,14 @@ h1, h2 {
 div.header {
   text-align: left;
   margin-top: 10px;
+}
+
+div.content {
+  display: flex;
+}
+
+div.content div {
+  margin-right: 10px;
 }
 ul {
   list-style-type: none;
