@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       tableHeader: [
-        'name',
+        'nameaa222',
         'website',
         'email'
       ]
