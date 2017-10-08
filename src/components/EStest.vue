@@ -15,7 +15,11 @@ export default {
   data () {
     return {
       tableHeader: [
+<<<<<<< HEAD
         'nameaa222',
+=======
+        'nameaaa',
+>>>>>>> 1002-sss
         'website',
         'email'
       ]
@@ -26,7 +30,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'fetchUser'
+      'sortName'
     ])
   },
   computed: {
@@ -43,7 +47,7 @@ export default {
     }
   },
   mounted () {
-    this.fetchUser().then((res) => {
+    this.sortName(true).then((res) => {
       this.$status(res)
     })
   }
