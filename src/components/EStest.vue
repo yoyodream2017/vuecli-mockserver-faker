@@ -15,11 +15,7 @@ export default {
   data () {
     return {
       tableHeader: [
-<<<<<<< HEAD
-        'nameaa222',
-=======
-        'nameaaa',
->>>>>>> 1002-sss
+        'name',
         'website',
         'email'
       ]
