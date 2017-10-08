@@ -12,8 +12,8 @@
         <div class='user-table__row' v-for="item in _userData.data">
           <div class='check-box' :class="item.checked?'check-box__checked':''" @click='selectUser(item.id)'>{{item.index}}</div>
           <div class='user-table__column'>{{item.name}}</div>
-          <div class='user-table__column'>{{item.email}}</div>
           <div class='user-table__column'>{{item.website}}</div>
+          <div class='user-table__column'>{{item.email}}</div>
           <div class='delete last__column' @click='deleteUser'>delete</div>
         </div>
       </div>
@@ -154,7 +154,7 @@ export default {
   position: absolute;
   width: 10px;
   height:10px;
-  background-color: green;
+  background-color: red;
 }
 
 
@@ -163,6 +163,7 @@ export default {
 }
 
 .user-table__column {
+  text-transform: capitalize;
   text-align: left;
   flex: 1;
 }
@@ -174,6 +175,7 @@ export default {
 }
 
 .last__column {
+  text-transform: capitalize;
   width: 60px;
 }
 </style>

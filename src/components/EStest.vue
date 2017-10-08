@@ -16,8 +16,8 @@ export default {
     return {
       tableHeader: [
         'name',
-        'email',
-        'website'
+        'website',
+        'email'
       ]
     }
   },
