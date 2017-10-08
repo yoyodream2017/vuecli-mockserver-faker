@@ -3,9 +3,9 @@
     <div class="user-table__header">
       <div class='check-box' :class="allChecked?'check-box__checked':''" @click='selectAllUser'></div>
       <div class='user-table__column' v-for="item in _userData.tableHeader">
-        <div> {{item}} </div>
+        <div> {{item[0].toUpperCase() + item.slice(1)}} </div>
       </div>
-      <div class='last__column'>delete</div>
+      <div class='last__column'>{{del[0].toUpperCase() + del.slice(1)}}</div>
     </div>
     <div v-if="dataLength > 0">
       <div class="user-table__body">
@@ -29,7 +29,8 @@ export default {
   data () {
     return {
       selectedId: [],
-      allChecked: false
+      allChecked: false,
+      del: 'delete'
     }
   },
   props: {
@@ -154,7 +155,7 @@ export default {
   position: absolute;
   width: 10px;
   height:10px;
-  background-color: green;
+  background-color: red;
 }
 
 
