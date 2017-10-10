@@ -28,6 +28,18 @@
     <div class='content'>
       <div>{{modifyObject}}</div>
     </div>
+    <div class='header'>testArray3</div>
+    <div class='content'>
+      <div v-for='item in testArray3'>{{item.name}}---{{item.age}}</div>
+    </div>
+    <div class='header'>testArray4</div>
+    <div class='content'>
+      <div v-for='item in testArray4()'>{{item.name}}---{{item.age}}</div>
+    </div>
+    <div class='header'>concatArray</div>
+    <div class='content'>
+      <div v-for='item in concatArray'>{{item.name}}---{{item.age}}</div>
+    </div>
   </div>
 </template>
 
@@ -47,6 +59,18 @@ export default {
         { min: '20' },
         { max: '30' },
         {}
+      ],
+      testArray3: [
+        { id: 1, name: 'a3', age: '18' },
+        { id: 2, name: 'a2', age: '20' },
+        { id: 3, name: 'a1', age: '19' },
+        { id: 4, name: 'a01', age: '182' }
+      ],
+      testArray4: () => [
+        { id: 1, name: 'a3', age: '18' },
+        { id: 2, name: 'a2', age: '20' },
+        { id: 3, name: 'a1', age: '19' },
+        { id: 4, name: 'a01', age: '182' }
       ]
     }
   },
@@ -79,6 +103,11 @@ export default {
         hash[key] = +item[key]
         return hash
       }, {}))
+    },
+    concatArray () {
+      // look, sort will change the original testArray3 when computed, if one array is used serveral times in an app, to avoid this unintended change, it would be better to return an array from a function like testArray4().... can be used to cancat array.
+      //数组三在计算属性时改变了原来的数组，因此如果数组在多处被使用，为了防止这种非故意的改变，最好采用一个函数返回数组的方式，就像数组四。...可以被用来拼接数组。
+      return [...this.testArray3.sort((a, b) => a.name > b.name), ...this.testArray4().sort((a, b) => a.name > b.name)]
     }
   }
 }
