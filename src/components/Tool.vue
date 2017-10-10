@@ -106,7 +106,7 @@ export default {
     },
     concatArray () {
       // look, sort will change the original testArray3 when computed, if one array is used serveral times in an app, to avoid this unintended change, it would be better to return an array from a function like testArray4().... can be used to cancat array.
-      //数组三在计算属性时改变了原来的数组，因此如果数组在多处被使用，为了防止这种非故意的改变，最好采用一个函数返回数组的方式，就像数组四。...可以被用来拼接数组。
+      // 数组三在计算属性时改变了原来的数组，因此如果数组在多处被使用，为了防止这种非故意的改变，最好采用一个函数返回数组的方式，就像数组四。...可以被用来拼接数组。
       return [...this.testArray3.sort((a, b) => a.name > b.name), ...this.testArray4().sort((a, b) => a.name > b.name)]
     }
   }
