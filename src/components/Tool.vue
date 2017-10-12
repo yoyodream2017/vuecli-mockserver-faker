@@ -40,6 +40,10 @@
     <div class='content'>
       <div v-for='item in concatArray'>{{item.name}}---{{item.age}}</div>
     </div>
+    <div class='header'>multiSortedArray--age first--then name</div>
+    <div class='content'>
+      <div v-for='item in adultOrderedArray'>{{item.name}}---{{item.age}}</div>
+    </div>
   </div>
 </template>
 
@@ -71,6 +75,20 @@ export default {
         { id: 2, name: 'a2', age: '20' },
         { id: 3, name: 'a1', age: '19' },
         { id: 4, name: 'a01', age: '182' }
+      ],
+      testArray5: () => [
+        { id: 1, name: 'a3', age: '14' },
+        { id: 2, name: 'a21', age: '21' },
+        { id: 3, name: 'a2', age: '20' },
+        { id: 3, name: 'a2', age: '22' },
+        { id: 4, name: 'a1', age: '16' },
+        { id: 5, name: 'b01', age: '21' },
+        { id: 6, name: 'a11', age: '21' },
+        { id: 7, name: 'a13', age: '21' },
+        { id: 8, name: 'a22', age: '16' },
+        { id: 9, name: 'a21', age: '16' },
+        { id: 10, name: 'a002', age: '21' },
+        { id: 11, name: 'a004', age: '19' }
       ]
     }
   },
@@ -108,6 +126,16 @@ export default {
       // look, sort will change the original testArray3 when computed, if one array is used serveral times in an app, to avoid this unintended change, it would be better to return an array from a function like testArray4().... can be used to cancat array.
       // 数组三在计算属性时改变了原来的数组，因此如果数组在多处被使用，为了防止这种非故意的改变，最好采用一个函数返回数组的方式，就像数组四。...可以被用来拼接数组。
       return [...this.testArray3.sort((a, b) => a.name > b.name), ...this.testArray4().sort((a, b) => a.name > b.name)]
+    },
+    adultOrderedArray () {
+      // this is an example to sort age first, if age is the same, then sort name.
+      return this.testArray5().filter(item => item.age >= 18).sort((a, b) => {
+        if (+a.age === +b.age) {
+          return a.name > b.name
+        } else {
+          return +a.age > +b.age
+        }
+      })
     }
   }
 }
