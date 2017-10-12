@@ -4,6 +4,7 @@
     <is-loading></is-loading>
     <div style='color:red'>{{totalProducts}}</div>
     <div style='color:blue'>{{totalUser}}</div>
+    <div style='color:green'>{{totalVIPUser}}</div>
     <div @click='send'>send</div>
   </div>
 </template>
@@ -20,7 +21,8 @@ export default {
   methods: {
     ...mapActions([
       'fetchProducts',
-      'fetchUser'
+      'fetchUser',
+      'fetchVIPUser'
     ]),
     test () {
       console.log('请求成功')
@@ -37,11 +39,17 @@ export default {
     ...mapGetters([
       'totalProducts',
       'totalUser',
+      'totalVIPUser',
       'isLoading'
     ])
   },
   mounted () {
     this.fetchUser().then((res) => {
+      this.$status(res, function (that) {
+        that.test()
+      }, this)
+    })
+    this.fetchVIPUser().then((res) => {
       this.$status(res, function (that) {
         that.test()
       }, this)
