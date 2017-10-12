@@ -1,10 +1,11 @@
 const faker = require('faker')
 const User = require('./user')
-let userId = 1
+let vipuserId = 1
+
 class VIPUser extends User {
   constructor () {
     super()
-    this.Id = userId++
+    this.id = vipuserId++// if no id provided,then id will continue from user class.
     this.vipLevel = Math.floor(Math.random() * 10 + 1)
   }
   createNew () {
