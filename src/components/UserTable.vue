@@ -3,7 +3,8 @@
     <div class="user-table__header">
       <div class='check-box' :class="allChecked?'check-box__checked':''" @click='selectAllUser'></div>
       <div class='user-table__column' v-for="item in _userData.tableHeader">
-        <div> {{item}} </div>
+        <div v-if="item==='name'" :class="changeSort?'sortable__descending':'sortable__ascending'" @click='sortByName'> {{item}} </div>
+        <div v-else>{{item}}</div>
       </div>
       <div class='last__column'>delete</div>
     </div>
@@ -12,8 +13,8 @@
         <div class='user-table__row' v-for="item in _userData.data">
           <div class='check-box' :class="item.checked?'check-box__checked':''" @click='selectUser(item.id)'>{{item.index}}</div>
           <div class='user-table__column'>{{item.name}}</div>
-          <div class='user-table__column'>{{item.email}}</div>
           <div class='user-table__column'>{{item.website}}</div>
+          <div class='user-table__column'>{{item.email}}</div>
           <div class='delete last__column' @click='deleteUser'>delete</div>
         </div>
       </div>
@@ -29,7 +30,8 @@ export default {
   data () {
     return {
       selectedId: [],
-      allChecked: false
+      allChecked: false,
+      changeSort: true
     }
   },
   props: {
@@ -40,7 +42,7 @@ export default {
   },
   computed: {
     _userData () {
-      return this.userData
+      return this.userData // change sort by name can not be set here, since data is down from parent component.
     },
     dataLength () {
       if (this.userData.data) {
@@ -50,7 +52,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setUser'
+      'setUser',
+      'sortName'
     ]),
 
     deleteUser () {
@@ -96,6 +99,11 @@ export default {
           checked: selectedId.includes(data.id)
         })
       })
+    },
+
+    sortByName () {
+      this.changeSort = !this.changeSort
+      this.sortName(this.changeSort)
     }
   }
 }
@@ -154,7 +162,7 @@ export default {
   position: absolute;
   width: 10px;
   height:10px;
-  background-color: green;
+  background-color: red;
 }
 
 
@@ -163,6 +171,7 @@ export default {
 }
 
 .user-table__column {
+  text-transform: capitalize;
   text-align: left;
   flex: 1;
 }
@@ -174,6 +183,34 @@ export default {
 }
 
 .last__column {
+  text-transform: capitalize;
   width: 60px;
 }
+
+.sortable__descending, .sortable__ascending {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.sortable__descending:after, .sortable__ascending:after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: -12px;
+  box-sizing: border-box;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.sortable__descending:after {
+  border-top: 6px solid grey;
+}
+
+.sortable__ascending:after {
+  border-bottom: 6px solid grey;
+}
+
 </style>

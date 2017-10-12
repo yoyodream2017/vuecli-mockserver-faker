@@ -16,8 +16,8 @@ export default {
     return {
       tableHeader: [
         'name',
-        'email',
-        'website'
+        'website',
+        'email'
       ]
     }
   },
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'fetchUser'
+      'sortName'
     ])
   },
   computed: {
@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted () {
-    this.fetchUser().then((res) => {
+    this.sortName(true).then((res) => {
       this.$status(res)
     })
   }

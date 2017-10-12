@@ -20,6 +20,23 @@ const actions = {
       return error
     })
   },
+  sortName: ({ commit }, bool) => {
+    return services.user.getUser()
+    .then((response) => {
+      if (response.data) {
+        const data = response.data.data.sort((a, b) => {
+          if (bool) {
+            return a.name >= b.name
+          } else {
+            return a.name <= b.name
+          }
+        })
+        // const data = null
+        commit(FETCH_USER, { data })
+        return response
+      }
+    })
+  },
   setUser: ({ commit }, data) => {
     commit(FETCH_USER, data)
   }
