@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
-   <img src="../assets/logo.png">
+    <router-link to='/'>Go to Index</router-link> 
+    <img src="../assets/logo.png">
     <is-loading></is-loading>
+    <h1>This is for returned faker data</h1>
     <div style='color:red'>{{totalProducts}}</div>
     <div style='color:blue'>{{totalUser}}</div>
     <div style='color:green'>{{totalVIPUser}}</div>
@@ -12,7 +14,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'hello',
+  name: 'dataview',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App11112222333'

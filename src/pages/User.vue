@@ -1,14 +1,15 @@
 <template>
   <div>
     <is-loading></is-loading>
-    <div class='title'> This is the user table page </div>
+    <router-link to='/'>Go to Index</router-link> 
+    <div class='title'>This is the user table page </div>
     <user-table :userData=_userData></user-table>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import UserTable from './UserTable'
+import UserTable from '../components/UserTable'
 import assign from 'object-assign'
 export default {
   name: 'estest',
