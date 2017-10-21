@@ -13,7 +13,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to use vuecli-faker-mockserver'
+      msg: 'Welcome to using vuecli-faker-mockserver'
     }
   }
 }
