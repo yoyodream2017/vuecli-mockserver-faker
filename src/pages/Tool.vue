@@ -1,18 +1,19 @@
 <template>
-  <div class="hello">
-    <div class='header'>Original</div>
+  <div>
+    <router-link to='/'>Go to Index</router-link> 
+    <div class='header'>testArray1</div>
     <div class='content'>
-      <div v-for='item in testArray'>{{item.name}}---{{item.age}}</div>
+      <div v-for='item in testArray1'>{{item.name}}---{{item.age}}</div>
     </div>
-    <div class='header'>AddClass-hightlight</div>
+    <div class='header'>addHighlightClass</div>
     <div class='content'>
       <div v-for='item in addHighlightClass' :class='item.highlight?"hightlight":""'>{{item.name}}---{{item.age}}</div>
     </div>
-    <div class='header'>SortByName</div>
+    <div class='header'>sortByName</div>
     <div class='content'>
       <div v-for='item in sortByName'>{{item.name}}---{{item.age}}</div>
     </div>
-    <div class='header'>SortByAge</div>
+    <div class='header'>sortByAge</div>
     <div class='content'>
       <div v-for='item in sortByAge'>{{item.name}}---{{item.age}}</div>
     </div>
@@ -24,10 +25,16 @@
     <div class='content'>
       <div>{{findOneAge}}</div>
     </div>
+    <div class='cross'></div>
+    <div class='header'>testArray2</div>
+    <div class='content'>
+      <div>{{testArray2}}</div>
+    </div>
     <div class='header'>modifyObject</div>
     <div class='content'>
       <div>{{modifyObject}}</div>
     </div>
+    <div class='cross'></div>
     <div class='header'>testArray3</div>
     <div class='content'>
       <div v-for='item in testArray3'>{{item.name}}---{{item.age}}</div>
@@ -40,7 +47,12 @@
     <div class='content'>
       <div v-for='item in concatArray'>{{item.name}}---{{item.age}}</div>
     </div>
-    <div class='header'>multiSortedArray--age first--then name</div>
+    <div class='cross'></div>
+    <div class='header'>testArray5</div>
+    <div class='content'>
+      <div v-for='item in testArray5()'>{{item.name}}---{{item.age}}</div>
+    </div>
+    <div class='header'>adultOrderedArray</div>
     <div class='content'>
       <div v-for='item in adultOrderedArray'>{{item.name}}---{{item.age}}</div>
     </div>
@@ -51,7 +63,7 @@
 export default {
   data () {
     return {
-      testArray: [
+      testArray1: [
         { id: 1, name: 'a3', age: '18' },
         { id: 2, name: 'a2', age: '20' },
         { id: 3, name: 'a1', age: '19' },
@@ -95,23 +107,23 @@ export default {
   computed: {
     addHighlightClass () {
       // Use map and Object.assign to add a new attribute, first {} would copy a item.
-      return this.testArray.map(item => Object.assign({}, item, {
+      return this.testArray1.map(item => Object.assign({}, item, {
         highlight: this.highlightId.includes(item.id)
       }))
     },
     sortByName () {
       // Sort would change the original testArray, use slice() to make a copy, you can test the behaviour when there is no slice function.
-      return this.testArray.slice().sort((a, b) => a.name > b.name)
+      return this.testArray1.slice().sort((a, b) => a.name > b.name)
     },
     sortByAge () {
       // Notice: age is String type, not suitable for number-comparison. use + to change String to Number. use ''+ to change Number to String
-      return this.testArray.slice().sort((a, b) => +a.age > +b.age)
+      return this.testArray1.slice().sort((a, b) => +a.age > +b.age)
     },
     filterOnAge () {
-      return this.testArray.filter(item => item.age > 19)
+      return this.testArray1.filter(item => item.age > 19)
     },
     findOneAge () {
-      return this.testArray.find(item => item.age > 19)
+      return this.testArray1.find(item => item.age > 19)
     },
     modifyObject () {
       // Object.keys().length can be used to check when an object is {}.
@@ -175,5 +187,11 @@ a {
 
 .hightlight {
   color: blue;
+}
+.cross {
+  width: 800px;
+  height: 10px;
+  margin-top: 10px;
+  border-top: 2px solid yellow;
 }
 </style>

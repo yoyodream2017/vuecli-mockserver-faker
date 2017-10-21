@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import Scrollbar from '../components/VueScrollbar'
-import EStest from '../components/EStest'
-import Tool from '../components/Tool'
+import Hello from '../pages/Hello'
+import Scrollbar from '../pages/VueScrollbar'
+import User from '../pages/User'
+import Tool from '../pages/Tool'
+import DataView from '../pages/DataView'
 Vue.use(Router)
 
 export default new Router({
@@ -18,12 +19,16 @@ export default new Router({
       component: Scrollbar
     },
     {
-      path: '/estest',
-      component: EStest
+      path: '/user',
+      component: User
     },
     {
       path: '/tool',
       component: Tool
+    },
+    {
+      path: '/dataview',
+      component: DataView
     }
   ]
 })
