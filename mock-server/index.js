@@ -25,11 +25,11 @@ module.exports = function () {
       msg: 'good'
     },
     products: [],
-    vipuser:[]
+    vipuser: []
   }
   // 修改下面的数字，指定返回数组的长度
-  data.user.data = createObject(User, 5)
-  data.products = createObject(Products, 5)
-  data.vipuser =createObject(VIPUser, 5)
+  data.user.data = createObject(User)
+  data.products = createObject(Products)
+  data.vipuser = createObject(VIPUser)
   return data
 }
