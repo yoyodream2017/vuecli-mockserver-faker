@@ -1,7 +1,6 @@
 <template>
-    <div class='full-page' v-show='isLoading'>
-      <img class='center' src="../../static/load.gif" height="60" width="60" alt="">
-    </div>
+  <div class='full-page' v-show='isLoading'>
+    <img class='center' src="../../static/load.gif" height="60" width="60" alt="">
   </div>
 </template>
 
