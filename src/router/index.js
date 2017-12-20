@@ -5,6 +5,7 @@ import Scrollbar from '../pages/VueScrollbar'
 import User from '../pages/User'
 import Tool from '../pages/Tool'
 import DataView from '../pages/DataView'
+import NativeTest from '../pages/NativeTest'
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +30,10 @@ export default new Router({
     {
       path: '/dataview',
       component: DataView
+    },
+    {
+      path: '/test',
+      component: NativeTest
     }
   ]
 })
